@@ -1,16 +1,131 @@
-<table>
-  <tr>
-    <th colspan="2">Name</th>
-    <th>Age</th>
-  </tr>
-  <tr>
-    <td>Jill</td>
-    <td>Smith</td>
-    <td>43</td>
-  </tr>
-  <tr>
-    <td>Eve</td>
-    <td>Jackson</td>
-    <td>57</td>
-  </tr>
-</table>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Info Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 5px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        td, th {
+            padding: 10px;
+            vertical-align: top;
+        }
+        .align-left {
+            text-align: left;
+        }
+        .address-label {
+            width: 20%;
+        }
+        .address-field {
+            width: 38%;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td class="address-label align-left">Name</td>
+            <td class="address-field">
+                <input type="text" placeholder="Iskandar Dzulqarnain" style="width: 100%; border:none;">
+            </td>
+            <td class="address-field">
+                <img src="https://mir-s3-cdn-cf.behance.net/projects/404/c53a50140715835.62464827dc869.jpg" width="200" height="150" alt="Profile Photo">
+            </td>
+        </tr>
+        <tr>
+            <td class="address-label align-left" colspan="1">Date of birth</td>
+            <td class="address-field" colspan="2">
+                <input type="text" placeholder="1st April 2001" style="width: 100%; border:none;">
+            </td>
+        </tr>
+        <tr>
+            <td class="address-label align-left" colspan="1">Religion</td>
+            <td class="address-field" colspan="2">
+                <input type="text" placeholder="Islam" style="width: 100%; border:none;">
+            </td>
+        </tr>
+        <tr>
+            <td class="address-label align-left" colspan="1">Race</td>
+            <td class="address-field" colspan="2">
+                <input type="text" placeholder="Melayu" style="width: 100%; border:none;">
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="4">Address</td>
+            <td class="address-label">Town</td>
+            <td class="address-field">
+                <input type="text" placeholder="T2-23A-01 Arte Plus" style="width: 100%; border:none;">
+            </td>
+        </tr>
+        <tr>
+            <td class="address-label">Street</td>
+            <td class="address-field">
+                <input type="text" placeholder="Jalan Ampang" style="width: 100%; border:none;">
+            </td>
+        </tr>
+        <tr>
+            <td class="address-label">City</td>
+            <td class="address-field">
+                <input type="text" placeholder="Kuala Lumpur" style="width: 100%; border:none;">
+            </td>
+        </tr>
+        <tr>
+            <td class="address-label">District</td>
+            <td class="address-field">
+                <input type="text" placeholder="District" style="width: 100%; border:none;">
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="3">Contact</td>
+            <td class="address-label">Mobile Phone</td>
+            <td class="address-field">
+                <input type="text" placeholder="011 1589 5859" style="width: 100%; border:none;">
+            </td>
+        </tr>
+        <tr>
+            <td class="address-label">Social Media</td>
+            <td class="address-field">
+                <input type="text" placeholder="none" style="width: 100%; border:none;">
+            </td>
+        </tr>
+        <tr>
+            <td class="address-label">Website</td>
+            <td class="address-field">
+                <input type="text" placeholder="Uthm.edu.my" style="width: 100%; border:none;">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" class="address-label">Course & Institution</td>
+            <td class="address-field" colspan="2">
+                <input type="text" placeholder="Universiti Tun Hussein Onn Malaysia" style="width: 100%; border:none;">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" class="address-label">Programming Skills</td>
+            <td class="address-field" colspan="2">
+                <input type="text" placeholder="Java, C++, C, Python, HTML, CSS, JavaScript" style="width: 100%; border:none;">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" class="address-label">Hobbies</td>
+            <td class="address-field" colspan="2">
+                <input type="text" placeholder="Play Video Games" style="width: 100%; border:none;">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" class="address-label">2025 Wishlist</td>
+            <td class="address-field" colspan="2">
+                <input type="text" placeholder="Maintain Dean's List" style="width: 100%; border:none;">
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

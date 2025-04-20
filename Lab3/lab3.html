@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Website</title>
+    <style>
+        /* Basic CSS Reset and Body Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #e0f7fa, #b2ebf2); /* Light, gradient background */
+            color: #333;
+            line-height: 1.6;
+            box-sizing: border-box; /* Ensure padding is included in the body's total width and height */
+        }
+
+        /* Video Header Styling */
+        .video-header {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .video-header video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Anime-style text shadow */
+        }
+
+        .header-content h1 {
+            margin-bottom: 0.5em;
+            font-size: 2.5em;
+        }
+
+        .header-content nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .header-content nav ul li {
+            display: inline;
+            margin: 0 1.5em;
+        }
+
+        .header-content nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease; /* Smooth hover effect */
+        }
+
+        .header-content nav ul li a:hover {
+            color: #fdd835; /* Highlight color on hover */
+        }
+
+        .video-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3); /* Slightly darker overlay */
+            z-index: 0;
+        }
+
+        /* Main Content Styling */
+        main {
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent white */
+            margin: 30px auto; /* Center the main content */
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); /* More prominent shadow */
+            max-width: 800px; /* Limit the width of the main content */
+            padding-bottom: 30px; /* Adjust bottom padding of main */
+            box-sizing: border-box; /* Ensure padding is included in the main's total width and height */
+        }
+
+        section {
+            margin-bottom: 40px;
+            padding: 25px;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle section shadow */
+            border-left: 5px solid #4fc3f7; /* Highlight border */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover animation */
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        section h2 {
+            color: #29b6f6; /* Vibrant heading color */
+            border-bottom: 3px solid #29b6f6;
+            padding-bottom: 0.7em;
+            margin-top: 0;
+            font-size: 2em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Biodata Section Display */
+        #biodata-output {
+            margin-top: 1.5em;
+            line-height: 1.8;
+        }
+
+        #biodata-output p {
+            margin-bottom: 0.8em;
+        }
+
+        #biodata-output strong {
+            font-weight: bold;
+            color: #1e88e5; /* Highlight label color */
+        }
+
+        /* Hobbies and Campus Life Sections */
+        #hobbies ul, #campus-life ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #hobbies li, #campus-life li {
+            padding: 0.6em 0;
+            border-bottom: 1px dashed #ccc;
+        }
+
+        #hobbies li:last-child, #campus-life li:last-child {
+            border-bottom: none;
+        }
+
+        #campus-life p {
+            margin-bottom: 1em;
+        }
+
+        /* Profile Picture Section */
+        #profile-picture {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent white */
+            margin: 30px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 300px; /* Adjust as needed */
+        }
+
+        #profile-picture img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px; /* Optional: round the corners of the image */
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+        }
+    </style>
+</head>
+<body>
+
+    <header class="video-header">
+        <video autoplay loop muted playsinline poster="styling/header1_fallback.jpg">
+            <source src="styling/header1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="header-content">
+            <h1>My Personal Website</h1>
+            <nav>
+                <ul>
+                    <li><a href="#profile">Profile</a></li>
+                    <li><a href="#biodata">Biodata</a></li>
+                    <li><a href="#hobbies">Hobbies</a></li>
+                    <li><a href="#wishlist">Wishlist</a></li>
+                    <li><a href="#campus-life">Campus Life</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section id="profile">
+            <h2>Profile Picture</h2>
+            <div id="profile-picture">
+                <img src="styling/pfp.jpg" alt="My Profile Picture">
+                <p>~ Me hehe ~</p>
+            </div>
+        </section>
+        
+        <section id="biodata">
+            <h2>Biodata</h2>
+            <div id="biodata-output">
+                <table>
+                    <tr>
+                        <th colspan="2">Biodata</th>
+                    </tr>
+                    <tr>
+                        <td>Name:</td>
+                        <td>Iskandar Dzulqarnain Bin Shaiful Nizam</td>
+                    </tr>
+                    </tr>
+                    <tr>
+                        <td>DOB:</td>
+                        <td>1st April 2001</td>
+                    </tr>
+                    <tr>
+                        <td>Religion:</td>
+                        <td>Islam</td>
+                    </tr>
+                    <tr>
+                        <td>Race:</td>
+                        <td>Melayu</td>
+                    </tr>
+                    <tr>
+                        <td>Address:</td>
+                        <td>
+                            <ul>
+                                <li>Street Address: T2-23A-01, Arte Plus, Jalan Ampang</li>
+                                <li>District: Ampang</li>
+                                <li>City: Kuala Lumpur</li>
+                                <li>Postal Code: 55000</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Contact:</td>
+                        <td>
+                            <ul>
+                                <li>Mobile Phone: 011 1589 5859</li>
+                                <li>Social Media: none</li>
+                                <li>Website: Uthm.edu.my</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Course & Institution:</td>
+                        <td>University Tun Hussein Onn Malaysia</td>
+                    </tr>
+                    <tr>
+                        <td>Programming skills:</td>
+                        <td>Java, C++, C, Python, HTML, CSS, Javascript, PHP</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section id="hobbies">
+            <h2>Hobbies</h2>
+            <table>
+                <tr>
+                    <ul>
+                        <li>Apple</li>
+                        <li>Banana</li>
+                        <li>Cherry</li>
+                      </ul>
+            </table>
+            <ul id="hobbies-list">
+                </ul>
+        </section>
+
+        <section id="wishlist">
+            <h2>2025 Wishlist</h2>
+            <table>
+                <tr>
+                    <td>~</td>
+                    <td>Maintain Dean's List</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="campus-life">
+            <h2>Campus Life</h2>
+            <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                ~ I've found my dearest people, those I truly cherish. We created so many memories together, but life has taken us in different directions. I long to mend any rifts, reconcile with them, and find peace in our relationships once more.
+            </p>
+        </section>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Biodata Section
+            const biodataSection = document.getElementById('biodata');
+            const biodataOutput = document.getElementById('biodata-output');
+            const biodataTable = biodataSection.querySelector('table');
+            let biodataHTML = '';
+
+            if (biodataTable) {
+                const rows = biodataTable.querySelectorAll('tr');
+                rows.forEach(row => {
+                    const labelCell = row.querySelector('td:first-child');
+                    const valueCell = row.querySelector('td:last-child');
+                    const ulInValue = valueCell ? valueCell.querySelector('ul') : null;
+
+                    if (labelCell && valueCell && !ulInValue) {
+                        const label = labelCell.textContent.trim();
+                        const value = valueCell.textContent.trim();
+                        biodataHTML += `<p><strong>${label}:</strong> ${value}</p>`;
+                    } else if (labelCell && ulInValue) {
+                        const label = labelCell.textContent.trim();
+                        let listItems = '';
+                        ulInValue.querySelectorAll('li').forEach(li => {
+                            listItems += `<li>${li.textContent.trim()}</li>`;
+                        });
+                        biodataHTML += `<p><strong>${label}:</strong> <ul>${listItems}</ul></p>`;
+                    } else if (rows[0] === row) {
+                        biodataHTML += `<h3>${row.textContent.trim()}</h3>`;
+                    }
+                });
+                biodataOutput.innerHTML = biodataHTML;
+                biodataSection.removeChild(biodataTable);
+            }
+
+            // Hobbies Section
+            const hobbiesSection = document.getElementById('hobbies');
+            const hobbiesTable = hobbiesSection.querySelector('table'); // Still looking for the table
+            const hobbiesList = document.getElementById('hobbies-list');
+            let hobbiesHTML = '';
+
+            if (hobbiesTable) {
+                const hobbyRow = hobbiesTable.querySelector('tr:last-child td:last-child');
+                if (hobbyRow) {
+                    const hobbiesText = hobbyRow.textContent.trim();
+                    const hobbyArray = hobbiesText.split(',').map(hobby => hobby.trim());
+                    hobbyArray.forEach(hobby => {
+                        hobbiesHTML += `<li>${hobby}</li>`;
+                    });
+                    hobbiesList.innerHTML = hobbiesHTML;
+                    hobbiesSection.removeChild(hobbiesTable);
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
