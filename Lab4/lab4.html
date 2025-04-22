@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Solutions</title>
+</head>
+<body>
+    <!-- Task 1 -->
+    <script>
+        for (let i = 1; i <= 10; i++) {  // Loop from 1 sampai 10
+            console.log(i); // Print the current number
+        }
+        console.log("Loop finished!"); // Print message after loop tamat(which is 10)
+    </script>
+    
+    <!-- Task 2 -->
+    <script>
+        const userInput = prompt("Enter a value:"); // Prompt user for input
+        if (userInput === "UTHM") { // Check if input is "UTHM" // === is strict equality operator
+            console.log("Welcome to UTHM!"); // Print welcome message
+        } else {
+            console.log("Invalid entry!"); // Print invalid message
+        }
+    </script>
+
+    <!-- Task 3 -->
+    <script>
+        const calculateSum = (num1, num2) => num1 + num2; // Arrow function to calculate sum
+        const firstNumber = parseFloat(prompt("Enter first number:")); // Prompt user for first number
+        const secondNumber = parseFloat(prompt("Enter second number:")); // Prompt user for second number
+        const result = calculateSum(firstNumber, secondNumber); // Call function to calculate sum
+
+        alert(`The sum is: ${result}`); // Show result in alert box
+    </script>
+
+    <!-- Task 4 -->
+    <script>
+        const car = { // Nama object
+            brand: "Toyota", // value
+            model: "Camry", // value
+            year: 2020, // value
+            carDetails: function() { // function dalam object
+                return `Brand: ${this.brand}, Model: ${this.model}, Year: ${this.year}`; // refers to the current object
+            }
+        };
+        
+        console.log(car.carDetails()); // call method carDetails
+    </script>
+    
+    <!-- Task 5 -->
+    <script>
+        // (a) Create initial array
+        let fruits = ["Apple", "Banana"];
+
+        // (b) Add "Mango" to the end // Tambah Mango kat belakang
+        fruits.push("Mango");
+
+        // (c) Add "Grapes" to the beginning // Tambah Grapes kat depan
+        fruits.unshift("Grapes");
+
+        // (d) Remove the last fruit // Buang last
+        fruits.pop();
+
+        // (e) Remove the first fruit // Buang first
+        fruits.shift();
+
+        // (f) Print final state // Print final output of fruits array
+        console.log(fruits);
+    </script>
+</body>
+</html>

@@ -5,23 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Personal Website</title>
     <style>
-        /* Basic CSS Reset and Body Styling */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #e0f7fa, #b2ebf2); /* Light, gradient background */
+            background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
             color: #333;
             line-height: 1.6;
-            box-sizing: border-box; /* Ensure padding is included in the body's total width and height */
+            box-sizing: border-box; 
         }
 
-        /* Video Header Styling */
+        /* Video Header */
         .video-header {
             position: relative;
             height: 300px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -45,7 +44,7 @@
         .header-content {
             position: relative;
             z-index: 1;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Anime-style text shadow */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
         }
 
         .header-content h1 {
@@ -134,7 +133,7 @@
 
         #biodata-output strong {
             font-weight: bold;
-            color: #1e88e5; /* Highlight label color */
+            color: #1e88e5; 
         }
 
         /* Hobbies and Campus Life Sections */
@@ -164,14 +163,14 @@
             margin: 30px auto;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 300px; /* Adjust as needed */
+            max-width: 280px;
         }
 
         #profile-picture img {
             max-width: 100%;
             height: auto;
-            border-radius: 5px; /* Optional: round the corners of the image */
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+            border-radius: 5px; 
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); 
         }
     </style>
 </head>
@@ -294,54 +293,77 @@
     </main>
 
     <script>
+        // Tunggu sampai semua content HTML siap load sebelum execute JavaScript
         document.addEventListener('DOMContentLoaded', function() {
-            // Biodata Section
-            const biodataSection = document.getElementById('biodata');
-            const biodataOutput = document.getElementById('biodata-output');
-            const biodataTable = biodataSection.querySelector('table');
-            let biodataHTML = '';
-
+            // === BIODATA SECTION ===
+            const biodataSection = document.getElementById('biodata'); // Dapatkan biodata section
+            const biodataOutput = document.getElementById('biodata-output'); // Dapatkan output container
+            const biodataTable = biodataSection.querySelector('table'); // Cari table dalam biodata
+            let biodataHTML = ''; // Variable untuk simpan HTML yang akan dihasilkan
+            
+            // Jika table wujud dalam biodata section
             if (biodataTable) {
+                // Dapatkan semua row (<tr>) dalam table
                 const rows = biodataTable.querySelectorAll('tr');
+                
+                // Loop melalui setiap row
                 rows.forEach(row => {
+                    // Dapatkan cell pertama (label) dan cell kedua (value)
                     const labelCell = row.querySelector('td:first-child');
                     const valueCell = row.querySelector('td:last-child');
-                    const ulInValue = valueCell ? valueCell.querySelector('ul') : null;
-
+                    const ulInValue = valueCell ? valueCell.querySelector('ul') : null; // Check jika ada list dalam value
+    
+                    // Case 1: Normal row (ada label dan value, tanpa list)
                     if (labelCell && valueCell && !ulInValue) {
-                        const label = labelCell.textContent.trim();
-                        const value = valueCell.textContent.trim();
-                        biodataHTML += `<p><strong>${label}:</strong> ${value}</p>`;
-                    } else if (labelCell && ulInValue) {
+                        const label = labelCell.textContent.trim(); // Dapatkan text label
+                        const value = valueCell.textContent.trim(); // Dapatkan text value
+                        biodataHTML += `<p><strong>${label}:</strong> ${value}</p>`; // Generate HTML
+                    }
+                    // Case 2: Row dengan list dalam value (e.g., Address, Contact)
+                    else if (labelCell && ulInValue) {
                         const label = labelCell.textContent.trim();
                         let listItems = '';
+                        // Loop melalui setiap item dalam list
                         ulInValue.querySelectorAll('li').forEach(li => {
                             listItems += `<li>${li.textContent.trim()}</li>`;
                         });
                         biodataHTML += `<p><strong>${label}:</strong> <ul>${listItems}</ul></p>`;
-                    } else if (rows[0] === row) {
+                    }
+                    // Case 3: Header row (jika ada)
+                    else if (rows[0] === row) {
                         biodataHTML += `<h3>${row.textContent.trim()}</h3>`;
                     }
                 });
+                
+                // Update output container dengan HTML yang baru
                 biodataOutput.innerHTML = biodataHTML;
+                // Buang table asal dari DOM
                 biodataSection.removeChild(biodataTable);
             }
-
-            // Hobbies Section
+    
+            // === HOBBIES SECTION ===
             const hobbiesSection = document.getElementById('hobbies');
-            const hobbiesTable = hobbiesSection.querySelector('table'); // Still looking for the table
-            const hobbiesList = document.getElementById('hobbies-list');
+            const hobbiesTable = hobbiesSection.querySelector('table'); // Dapatkan table hobbies
+            const hobbiesList = document.getElementById('hobbies-list'); // Dapatkan list container
             let hobbiesHTML = '';
-
+    
+            // Jika table hobbies wujud
             if (hobbiesTable) {
+                // Dapatkan cell terakhir dalam row terakhir (yang ada list hobbies)
                 const hobbyRow = hobbiesTable.querySelector('tr:last-child td:last-child');
+                
                 if (hobbyRow) {
-                    const hobbiesText = hobbyRow.textContent.trim();
-                    const hobbyArray = hobbiesText.split(',').map(hobby => hobby.trim());
+                    const hobbiesText = hobbyRow.textContent.trim(); // Dapatkan text hobbies
+                    const hobbyArray = hobbiesText.split(',').map(hobby => hobby.trim()); // Split text jadi array
+                    
+                    // Generate <li> untuk setiap hobby
                     hobbyArray.forEach(hobby => {
                         hobbiesHTML += `<li>${hobby}</li>`;
                     });
+                    
+                    // Update list container dengan HTML baru
                     hobbiesList.innerHTML = hobbiesHTML;
+                    // Buang table asal dari DOM
                     hobbiesSection.removeChild(hobbiesTable);
                 }
             }
