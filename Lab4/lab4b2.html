@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 2: Number Comparison</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #e6ffe6;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #28a745;
+            border-radius: 4px;
+            margin-right: 10px;
+            font-size: 1em;
+            width: 200px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        p {
+            margin-top: 20px;
+            font-style: italic;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Question 2: Check Your Number</h1>
+        <label for="numberInputQ2">Enter a number:</label>
+        <input type="text" id="numberInputQ2" placeholder="e.g., 5, 15">
+        <button onclick="checkNumberQ2()">Check</button>
+        <p>Will check if the number is lower than 10 or higher than 10.</p>
+    </div>
+
+    <script>
+        function checkNumberQ2() {
+            var inputValue = document.getElementById("numberInputQ2").value;
+            var number = Number(inputValue); // Convert the input string to a number
+
+            // Check if the input is empty or not a number
+            if (inputValue.trim() === '' || isNaN(number)) {
+                alert("Please enter a valid number!"); // [cite: 8]
+            } else if (number < 10) { // [cite: 7]
+                alert("The number is lower than 10");
+            } else if (number > 10) { // [cite: 7]
+                alert("The number is higher than 10");
+            }
+        }
+    </script>
+
+</body>
+</html>
