@@ -14,7 +14,15 @@
     <table>
         <tr>
             <td>Name</td>
-            <td><?php echo "$name"; ?></td>
+            <td>Matric No</td>
+            <td>Course</td>
+            <td>Year</td>
+            <td>Address</td>
+            <td><?php echo "$name";?></td>
+            <td><?php echo "$matric";?></td>
+            <td><?php echo "$course";?></td>
+            <td><?php echo "$year";?></td>
+            <td><?php echo "$address";?></td>
         </tr>
     </table>
 </body>
